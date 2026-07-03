@@ -1,5 +1,4 @@
-@"
-const express = require('express');
+﻿const express = require('express');
 const router = express.Router();
 const userController = require('../controllers/userController');
 const { validateUser, validateId } = require('../middleware/validation');
@@ -31,4 +30,3 @@ router.put('/users/:id', protect, validateId, isOwnerOrAdmin, validateUser, user
 router.delete('/users/:id', protect, validateId, adminOnly, userController.deleteUser);
 
 module.exports = router;
-"@ | Out-File -Encoding UTF8 backend\routes\api.js

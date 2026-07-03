@@ -1,5 +1,4 @@
-@"
-const errorHandler = (err, req, res, next) => {
+﻿const errorHandler = (err, req, res, next) => {
     console.error('❌ ERROR:', err.message);
     console.error(err.stack);
 
@@ -26,4 +25,3 @@ class AppError extends Error {
 }
 
 module.exports = { errorHandler, AppError };
-"@ | Out-File -Encoding UTF8 backend\middleware\errorHandler.js

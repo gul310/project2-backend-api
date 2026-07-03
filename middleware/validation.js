@@ -1,15 +1,32 @@
-@"
-const validateUser = (req, res, next) => {
+﻿const validateUser = (req, res, next) => {
     const { name, email, phone, role } = req.body;
     const errors = [];
 
-    if (!name || typeof name !== 'string' || name.trim().length < 2) {
-        errors.push('Name must be at least 2 characters long');
-    }
+    // For PUT requests, only validate fields that are provided
+    const isUpdate = req.method === 'PUT';
 
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!email || !emailRegex.test(email)) {
-        errors.push('Valid email address is required');
+    if (!isUpdate) {
+        // For POST requests, validate all required fields
+        if (!name || typeof name !== 'string' || name.trim().length < 2) {
+            errors.push('Name must be at least 2 characters long');
+        }
+
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!email || !emailRegex.test(email)) {
+            errors.push('Valid email address is required');
+        }
+    } else {
+        // For PUT requests, validate only if fields are provided
+        if (name !== undefined && (typeof name !== 'string' || name.trim().length < 2)) {
+            errors.push('Name must be at least 2 characters long');
+        }
+
+        if (email !== undefined) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                errors.push('Valid email address is required');
+            }
+        }
     }
 
     if (phone) {
@@ -21,7 +38,7 @@ const validateUser = (req, res, next) => {
 
     const validRoles = ['admin', 'user', 'guest', 'moderator'];
     if (role && !validRoles.includes(role)) {
-        errors.push(`Role must be one of: \${validRoles.join(', ')}`);
+        errors.push('Role must be one of: ' + validRoles.join(', '));
     }
 
     if (errors.length > 0) {
@@ -31,11 +48,10 @@ const validateUser = (req, res, next) => {
         });
     }
 
-    req.body.name = name.trim();
-    req.body.email = email.toLowerCase().trim();
-    if (req.body.phone) {
-        req.body.phone = req.body.phone.trim();
-    }
+    // Sanitize input
+    if (name) req.body.name = name.trim();
+    if (email) req.body.email = email.toLowerCase().trim();
+    if (phone) req.body.phone = phone.trim();
 
     next();
 };
@@ -129,4 +145,3 @@ module.exports = {
     validateRegister,
     validateId
 };
-"@ | Out-File -Encoding UTF8 backend\middleware\validation.js

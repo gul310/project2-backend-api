@@ -1,5 +1,4 @@
-@"
-const UserModel = require('../models/userModel');
+﻿const UserModel = require('../models/userModel');
 const { AppError } = require('../middleware/errorHandler');
 
 const getAllUsers = async (req, res, next) => {
@@ -19,7 +18,7 @@ const getUserById = async (req, res, next) => {
     try {
         const user = UserModel.findById(req.params.id);
         if (!user) {
-            return next(new AppError(`User with ID \${req.params.id} not found`, 404));
+            return next(new AppError('User with ID ' + req.params.id + ' not found', 404));
         }
         res.status(200).json({
             success: true,
@@ -70,7 +69,7 @@ const updateUser = async (req, res, next) => {
 
         const existingUser = UserModel.findById(userId);
         if (!existingUser) {
-            return next(new AppError(`User with ID \${userId} not found`, 404));
+            return next(new AppError('User with ID ' + userId + ' not found', 404));
         }
 
         if (email && email !== existingUser.email) {
@@ -104,7 +103,7 @@ const deleteUser = async (req, res, next) => {
         
         const existingUser = UserModel.findById(userId);
         if (!existingUser) {
-            return next(new AppError(`User with ID \${userId} not found`, 404));
+            return next(new AppError('User with ID ' + userId + ' not found', 404));
         }
 
         if (req.user.id === userId && req.user.role === 'admin') {
@@ -125,4 +124,3 @@ module.exports = {
     updateUser,
     deleteUser
 };
-"@ | Out-File -Encoding UTF8 backend\controllers\userController.js

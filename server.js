@@ -1,5 +1,4 @@
-@"
-require('dotenv').config();
+﻿require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
@@ -8,7 +7,7 @@ const path = require('path');
 
 const apiRoutes = require('./routes/api');
 const authRoutes = require('./routes/authRoutes');
-const errorHandler = require('./middleware/errorHandler');
+const { errorHandler } = require('./middleware/errorHandler');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -41,7 +40,7 @@ app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 
 // Logging Middleware
 app.use((req, res, next) => {
-    console.log(`[\${new Date().toISOString()}] \${req.method} \${req.originalUrl}`);
+    console.log('[' + new Date().toISOString() + '] ' + req.method + ' ' + req.originalUrl);
     next();
 });
 
@@ -62,26 +61,25 @@ app.get('/health', (req, res) => {
 app.use('/api', apiRoutes);
 app.use('/api/auth', authRoutes);
 
-// 404 Handler
+// 404 Handler - This must come BEFORE errorHandler
 app.use((req, res) => {
     res.status(404).json({
         success: false,
-        error: `Route \${req.originalUrl} not found`
+        error: 'Route ' + req.originalUrl + ' not found'
     });
 });
 
-// Global Error Handler
+// Global Error Handler - This must be LAST
 app.use(errorHandler);
 
 // Start Server
 app.listen(PORT, () => {
-    console.log('\x1b[36m%s\x1b[0m', '╔══════════════════════════════════════════════════════╗');
-    console.log('\x1b[36m%s\x1b[0m', '║         🚀 NovaAI Backend Server Started              ║');
-    console.log('\x1b[36m%s\x1b[0m', '╠══════════════════════════════════════════════════════╣');
-    console.log(`║  🌐 URL:        http://localhost:\${PORT}                          ║`);
-    console.log(`║  📚 API Docs:   http://localhost:\${PORT}/api                      ║`);
-    console.log(`║  💚 Health:     http://localhost:\${PORT}/health                   ║`);
-    console.log('\x1b[36m%s\x1b[0m', '╚══════════════════════════════════════════════════════╝');
-    console.log('\x1b[32m%s\x1b[0m', '✅ Server is ready!');
+    console.log('╔══════════════════════════════════════════════════════╗');
+    console.log('║         🚀 NovaAI Backend Server Started              ║');
+    console.log('╠══════════════════════════════════════════════════════╣');
+    console.log('║  🌐 URL:        http://localhost:' + PORT + '                          ║');
+    console.log('║  📚 API Docs:   http://localhost:' + PORT + '/api                      ║');
+    console.log('║  💚 Health:     http://localhost:' + PORT + '/health                   ║');
+    console.log('╚══════════════════════════════════════════════════════╝');
+    console.log('✅ Server is ready!');
 });
-"@ | Out-File -Encoding UTF8 backend\server.js

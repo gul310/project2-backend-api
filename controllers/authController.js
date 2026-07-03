@@ -1,5 +1,4 @@
-@"
-const jwt = require('jsonwebtoken');
+﻿const jwt = require('jsonwebtoken');
 const UserModel = require('../models/userModel');
 const { AppError } = require('../middleware/errorHandler');
 
@@ -121,4 +120,3 @@ module.exports = {
     getMe,
     updateProfile
 };
-"@ | Out-File -Encoding UTF8 backend\controllers\authController.js

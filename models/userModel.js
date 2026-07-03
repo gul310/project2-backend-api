@@ -1,5 +1,4 @@
-@"
-const bcrypt = require('bcryptjs');
+﻿const bcrypt = require('bcryptjs');
 
 let users = [
     {
@@ -98,4 +97,3 @@ class UserModel {
 }
 
 module.exports = UserModel;
-"@ | Out-File -Encoding UTF8 backend\models\userModel.js

@@ -1,5 +1,4 @@
-@"
-const jwt = require('jsonwebtoken');
+﻿const jwt = require('jsonwebtoken');
 const UserModel = require('../models/userModel');
 
 const protect = async (req, res, next) => {
@@ -59,4 +58,3 @@ const isOwnerOrAdmin = (req, res, next) => {
 };
 
 module.exports = { protect, adminOnly, isOwnerOrAdmin };
-"@ | Out-File -Encoding UTF8 backend\middleware\auth.js
