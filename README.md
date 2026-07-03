@@ -2,33 +2,19 @@
 
 
 
-\## DecodeLabs Full Stack Internship - Batch 2026
+\## DecodeLabs Full Stack Development Industrial Training Program
 
 
 
-\### 📋 Overview
+!\[Node.js](https://img.shields.io/badge/Node.js-18.x-green)
 
-This is a RESTful API built with Node.js and Express.js for user management. It demonstrates backend development skills including CRUD operations, JWT authentication, input validation, and proper error handling.
+!\[Express.js](https://img.shields.io/badge/Express.js-4.18.x-blue)
 
+!\[JWT](https://img.shields.io/badge/JWT-Authentication-orange)
 
+!\[License](https://img.shields.io/badge/License-MIT-yellow)
 
-\### 🛠️ Tech Stack
-
-\- \*\*Node.js\*\* - JavaScript runtime
-
-\- \*\*Express.js\*\* - Web framework
-
-\- \*\*JWT\*\* - Authentication
-
-\- \*\*bcryptjs\*\* - Password hashing
-
-\- \*\*dotenv\*\* - Environment variables
-
-\- \*\*CORS\*\* - Cross-origin resource sharing
-
-\- \*\*Helmet\*\* - Security headers
-
-\- \*\*express-rate-limit\*\* - Rate limiting
+!\[Status](https://img.shields.io/badge/Status-Complete-brightgreen)
 
 
 
@@ -36,11 +22,157 @@ This is a RESTful API built with Node.js and Express.js for user management. It 
 
 
 
-\## 🚀 Quick Start
+\## 📋 Project Overview
 
 
 
-\### 1. Clone Repository
+\*\*Project 2: Backend API Development\*\* is the second milestone in the DecodeLabs Full Stack Development Industrial Training Program. This project focuses on building a robust RESTful API using Node.js and Express.js, implementing authentication, authorization, and full CRUD operations.
+
+
+
+\### 🎯 Project Objectives
+
+
+
+\- Build a RESTful API with Node.js + Express.js
+
+\- Implement JWT Authentication \& Authorization
+
+\- Create full CRUD operations (GET, POST, PUT, DELETE)
+
+\- Validate user input and handle errors
+
+\- Implement security best practices
+
+\- Prepare for database integration (Project 3)
+
+
+
+\### 📊 Project Status
+
+
+
+| Milestone | Status | Completion |
+
+|-----------|--------|------------|
+
+| Project 1: Frontend | ✅ Complete | 100% |
+
+| Project 2: Backend API | ✅ Complete | 100% |
+
+| Project 3: Database | ⏳ Pending | 0% |
+
+| Project 4: Full Stack | ⏳ Pending | 0% |
+
+
+
+\---
+
+
+
+\## 🛠️ Tech Stack
+
+
+
+| Technology | Version | Purpose |
+
+|------------|---------|---------|
+
+| \*\*Node.js\*\* | v18.x | JavaScript Runtime |
+
+| \*\*Express.js\*\* | v4.18.x | Web Framework |
+
+| \*\*JWT\*\* | v9.x | Authentication |
+
+| \*\*bcryptjs\*\* | v2.4.x | Password Hashing |
+
+| \*\*dotenv\*\* | v16.x | Environment Variables |
+
+| \*\*CORS\*\* | v2.8.x | Cross-Origin Resource Sharing |
+
+| \*\*Helmet\*\* | v7.x | Security Headers |
+
+| \*\*express-rate-limit\*\* | v6.x | Rate Limiting |
+
+
+
+\---
+
+
+
+\## 📁 Project Structure
+
+backend/
+
+├── server.js # Main server file
+
+├── package.json # Dependencies and scripts
+
+├── .env # Environment variables
+
+├── .gitignore # Git ignore file
+
+├── README.md # Project documentation
+
+├── CHANGELOG.md # Version history
+
+├── routes/
+
+│ ├── api.js # API routes
+
+│ └── authRoutes.js # Authentication routes
+
+├── controllers/
+
+│ ├── userController.js # User CRUD operations
+
+│ └── authController.js # Authentication logic
+
+├── models/
+
+│ └── userModel.js # User data model
+
+├── middleware/
+
+│ ├── auth.js # JWT authentication
+
+│ ├── validation.js # Input validation
+
+│ └── errorHandler.js # Error handling
+
+└── utils/
+
+└── helpers.js # Utility functions
+
+
+
+text
+
+
+
+\---
+
+
+
+\## 🔧 Installation \& Setup
+
+
+
+\### Prerequisites
+
+
+
+\- Node.js (v18 or higher)
+
+\- npm (v8 or higher)
+
+\- Git
+
+
+
+\### Step 1: Clone Repository
+
+
 
 ```bash
 
